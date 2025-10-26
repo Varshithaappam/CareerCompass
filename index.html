@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers Site - Home</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">CareerCompass</a>
+        </div>
+        <div class="user-actions">
+        <a href="jobs.html" class="btn-text">Jobs</a>
+        <a href="services.html" class="btn-text">Services</a>
+        <a href="profile.html" class="btn-text">Profile</a>
+        <a href="./applicant/applicant-login.html" class="btn btn-secondary">Login</a>
+        <a href="./applicant/applicant-register.html" class="btn btn-primary">Register</a>
+        <a href="./employer/employer-login.html" class="btn btn-secondar">Employers Login</a>
+        <a href="./employer/employer-register.html" class="btn btn-primary">Employers register</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h1>Over 10,000 openings delivered perfectly</h1>
+        <p>Find your next role with top companies</p>
+        
+        <form id="jobSearchForm" class="search-bar" action="jobs.html" method="GET">
+            <div class="input-group">
+                <input type="text" name="keywords" id="keywords" placeholder="Job Title, Skills, or Company">
+            </div>
+            <div class="input-group" style="flex-grow: 0.5;">
+                <input type="text" name="location" id="location" placeholder="Location">
+            </div>
+            <button type="submit" class="btn btn-search">Search</button>
+        </form>
+    </section>
+
+    <section class="content-section">
+        <h2>Popular Categories</h2>
+        <div class="category-grid">
+            <div class="category-item"><a href="jobs.html?category=IT">IT / Software</a></div>
+            <div class="category-item"><a href="jobs.html?category=WFH">Work From Home</a></div>
+            <div class="category-item"><a href="jobs.html?category=HR">Human Resources</a></div>
+            <div class="category-item"><a href="jobs.html?category=Sales">Sales & Marketing</a></div>
+            <div class="category-item"><a href="jobs.html?category=Banking">Banking & Finance</a></div>
+            <div class="category-item"><a href="jobs.html?category=Support">Customer Support</a></div>
+        </div>
+    </section>
+
+    <section class="content-section">
+    <h2>Latest Jobs from the Network</h2>
+    
+    <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+        
+        <div class="job-card">
+            <h3>Cloud Solutions Architect</h3>
+            <p class="company-name">Amazon Web Services (AWS)</p>
+            <div class="job-meta">Remote | 10+ Yrs Exp</div>
+            <p class="posted-time">Posted 3 hours ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Cloud%20Solutions%20Architect" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+        
+        <div class="job-card">
+            <h3>Financial Analyst</h3>
+            <p class="company-name">JPMorgan Chase</p>
+            <div class="job-meta">New York, NY | Mid-Level</div>
+            <p class="posted-time">Posted 1 day ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Financial%20Analyst" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+        
+        <div class="job-card">
+            <h3>Digital Marketing Manager</h3>
+            <p class="company-name">Google</p>
+            <div class="job-meta">Mountain View, CA | Senior</div>
+            <p class="posted-time">Posted 1 day ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Digital%20Marketing%20Manager" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+        
+        <div class="job-card">
+            <h3>Senior UI/UX Designer</h3>
+            <p class="company-name">Adobe</p>
+            <div class="job-meta">San Francisco, CA | 5-7 Yrs Exp</div>
+            <p class="posted-time">Posted 2 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Senior%20UI%2FUX%20Designer" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Mechanical Engineer III</h3>
+            <p class="company-name">Tesla</p>
+            <div class="job-meta">Austin, TX | Full-Time</div>
+            <p class="posted-time">Posted 3 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Mechanical%20Engineer" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Registered Nurse (RN)</h3>
+            <p class="company-name">Mayo Clinic</p>
+            <div class="job-meta">Rochester, MN | Immediate Hire</div>
+            <p class="posted-time">Posted 12 hours ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Registered%20Nurse" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Principal Data Scientist</h3>
+            <p class="company-name">Netflix</p>
+            <div class="job-meta">Los Gatos, CA | Leadership</div>
+            <p class="posted-time">Posted 1 day ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Principal%20Data%20Scientist" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+        
+        <div class="job-card">
+            <h3>Logistics Coordinator</h3>
+            <p class="company-name">FedEx</p>
+            <div class="job-meta">Memphis, TN | Entry-Level</div>
+            <p class="posted-time">Posted 4 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Logistics%20Coordinator" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>HR Business Partner</h3>
+            <p class="company-name">Microsoft</p>
+            <div class="job-meta">Redmond, WA | Full-Time</div>
+            <p class="posted-time">Posted 8 hours ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=HR%20Business%20Partner" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Curriculum Developer</h3>
+            <p class="company-name">Coursera</p>
+            <div class="job-meta">Remote | Project-Based</div>
+            <p class="posted-time">Posted 5 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Curriculum%20Developer" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Account Executive (SaaS)</h3>
+            <p class="company-name">Salesforce</p>
+            <div class="job-meta">Chicago, IL | High-Commission</div>
+            <p class="posted-time">Posted 1 day ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Account%20Executive%20SaaS" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Cyber Security Analyst</h3>
+            <p class="company-name">IBM</p>
+            <div class="job-meta">Dallas, TX | Security Focus</div>
+            <p class="posted-time">Posted 2 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Cyber%20Security%20Analyst" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+        
+        <div class="job-card">
+            <h3>Research Scientist I</h3>
+            <p class="company-name">Pfizer</p>
+            <div class="job-meta">Cambridge, MA | R&D</div>
+            <p class="posted-time">Posted 6 hours ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Research%20Scientist" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Senior Technical Writer</h3>
+            <p class="company-name">Cisco</p>
+            <div class="job-meta">San Jose, CA | Documentation</div>
+            <p class="posted-time">Posted 3 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Technical%20Writer" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Product Manager, AI/ML</h3>
+            <p class="company-name">Meta</p>
+            <div class="job-meta">Menlo Park, CA | Full-Time</div>
+            <p class="posted-time">Posted 1 day ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Product%20Manager%20AI%2FML" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Management Consultant</h3>
+            <p class="company-name">McKinsey & Company</p>
+            <div class="job-meta">Global Travel | High-Demand</div>
+            <p class="posted-time">Posted 2 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Management%20Consultant" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Corporate Counsel</h3>
+            <p class="company-name">Apple</p>
+            <div class="job-meta">Cupertino, CA | Legal Dept</div>
+            <p class="posted-time">Posted 4 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Corporate%20Counsel" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+        
+        <div class="job-card">
+            <h3>Technical Support Specialist</h3>
+            <p class="company-name">Zendesk</p>
+            <div class="job-meta">Remote | Customer Focus</div>
+            <p class="posted-time">Posted 1 day ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Technical%20Support%20Specialist" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>QA Automation Engineer</h3>
+            <p class="company-name">Intel</p>
+            <div class="job-meta">Bangalore, India | Testing</div>
+            <p class="posted-time">Posted 22 hours ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=QA%20Automation%20Engineer" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Non-Profit Program Director</h3>
+            <p class="company-name">United Way</p>
+            <div class="job-meta">Washington, D.C. | Leadership</div>
+            <p class="posted-time">Posted 5 days ago</p>
+            <a href="https://www.linkedin.com/jobs/search?keywords=Non-Profit%20Program%20Director" target="_blank" class="btn btn-secondary" style="margin-top:10px; padding: 5px 10px;">View on LinkedIn</a>
+        </div>
+
+    </div>
+</section>
+
+    <footer class="footer">
+        <p>&copy; 2024 CareerCompass. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">About Us</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

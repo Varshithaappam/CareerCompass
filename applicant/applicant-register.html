@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applicant Register - CareerCompass</title>
+  <link rel="stylesheet" href="../base.css">
+  <link rel="stylesheet" href="../employer.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <a href="../index.html">CareerCompass</a>
+  </div>
+  <div class="user-actions">
+    <a href="../jobs.html" class="btn-text">Jobs</a>
+    <a href="../services.html" class="btn-text">Services</a>
+    <a href="../profile.html" class="btn-text">Profile</a>
+    <a href="applicant-login.html" class="btn btn-secondary">Login</a>
+    <a href="applicant-register.html" class="btn btn-primary">Register</a>
+    <a href="../employer/employer-login.html" class="btn btn-secondary">Employers Login</a>
+    <a href="../employer/employer-register.html" class="btn btn-primary">Employers register</a>
+  </div>
+</header>
+
+<section class="form-container">
+  <h2>Create Applicant Account</h2>
+  <form id="registerForm" novalidate>
+    <div class="form-field">
+      <label for="applicant-name">Full Name</label>
+      <input type="text" id="applicant-name" placeholder="Enter your name" required>
+      <span class="error-message" id="name-error"></span>
+    </div>
+    <div class="form-field">
+      <label for="applicant-email">Email</label>
+      <input type="email" id="applicant-email" placeholder="Enter your email" required>
+      <span class="error-message" id="email-error"></span>
+    </div>
+    <div class="form-field">
+      <label for="applicant-password">Password</label>
+      <input type="password" id="applicant-password" placeholder="Enter a password" required>
+      <span class="error-message" id="password-error"></span>
+    </div>
+    <!-- Success message paragraph -->
+    <p id="form-success" style="color: green; margin-top: 10px;"></p>
+    <button type="submit" class="btn btn-primary" style="width:100%;">Register</button>
+  </form>
+  <div class="switch-form">
+    <p>Already have an account? <a href="applicant-login.html">Sign in</a></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2024 CareerCompass. All rights reserved.</p>
+</footer>
+
+<script src="applicant-validation.js"></script>
+</body>
+</html>

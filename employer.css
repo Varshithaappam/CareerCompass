@@ -1,0 +1,58 @@
+/* Styles specific to the Employer Page (employer.html) */
+
+.form-container {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.form-field {
+    margin-bottom: 25px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-field input[type="email"],
+.form-field input[type="password"],
+.form-field input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-field input:focus {
+    border-color: var(--primary-color);
+}
+
+.form-field .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95em;
+}

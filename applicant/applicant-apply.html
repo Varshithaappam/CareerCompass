@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apply for Job | CareerCompass</title>
+  <link rel="stylesheet" href="../base.css"/>
+  <link rel="stylesheet" href="../employer.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+    <a href="../index.html">CareerCompass</a>
+  </div>
+  <div class="user-actions">
+    <a href="../jobs.html" class="btn-text">Jobs</a>
+    <a href="../services.html" class="btn-text">Services</a>
+    <a href="../profile.html" class="btn-text">Profile</a>
+    <a href="applicant-login.html" class="btn btn-secondary">Login</a>
+    <a href="applicant-register.html" class="btn btn-primary">Register</a>
+    <a href="../employer/employer-login.html" class="btn btn-secondary">Employers Login</a>
+    <a href="../employer/employer-register.html" class="btn btn-primary">Employers register</a>
+  </div>
+  </header>
+
+  <section class="form-container">
+    <h2>Job Application Form</h2>
+    <form id="applicantForm" novalidate>
+      <div class="form-field">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" required placeholder="Enter your name"/>
+        <span class="error-message" id="name-error"></span>
+      </div>
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required placeholder="Enter your email"/>
+        <span class="error-message" id="email-error"></span>
+      </div>
+      <div class="form-field">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" required placeholder="Enter your phone number"/>
+        <span class="error-message" id="phone-error"></span>
+      </div>
+      <div class="form-field">
+        <label for="resume">Resume Link</label>
+        <input type="url" id="resume" required placeholder="Paste Google Drive or other link"/>
+        <span class="error-message" id="resume-error"></span>
+      </div>
+      <div class="form-field">
+        <label for="message">Cover Letter / Message</label>
+        <textarea id="message" rows="3" placeholder="Why do you want this job?"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Apply Now</button>
+      <span id="form-success" style="color: green; margin-top: 10px;"></span>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 CareerCompass. All rights reserved.</p>
+  </footer>
+  <script src="../validation.js"></script>
+  <script>
+    // Application form handling - extend your validation.js or use below
+    document.getElementById('applicantForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Clear errors (if using your utility)
+      document.querySelectorAll(".error-message").forEach(e => e.textContent = "");
+      document.getElementById("form-success").textContent = "";
+
+      const name = document.getElementById("fullName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const resume = document.getElementById("resume").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      let valid = true;
+
+      if (name.length < 2) {
+        document.getElementById("name-error").textContent = "Full name required.";
+        valid = false;
+      }
+      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+        document.getElementById("email-error").textContent = "Enter a valid email.";
+        valid = false;
+      }
+      if (!/^\d{10}$/.test(phone)) {
+        document.getElementById("phone-error").textContent = "Enter a valid 10-digit phone number.";
+        valid = false;
+      }
+      if (!resume) {
+        document.getElementById("resume-error").textContent = "Resume link required.";
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      let applications = JSON.parse(localStorage.getItem("applications") || "[]");
+      applications.push({ name, email, phone, resume, message });
+      localStorage.setItem("applications", JSON.stringify(applications));
+
+      document.getElementById("form-success").textContent = "Application submitted successfully!";
+      this.reset();
+    });
+  </script>
+</body>
+</html>

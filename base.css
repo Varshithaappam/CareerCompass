@@ -1,0 +1,156 @@
+/* --- Global Style Variables & Resets --- */
+:root {
+    --primary-color: #5d3dbe; /* Foundit/Vibrant Purple for key actions */
+    --secondary-color: #f0f0f0;
+    --accent-color: #ff9900; /* Orange for search buttons */
+    --dark-text: #333;
+    --light-text: #fff;
+    --border-color: #e0e0e0;
+    --background-color: #f7f7f7; /* Light gray body background */
+    --card-background: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-text);
+    background-color: var(--background-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.2s;
+}
+
+/* --- Utility Classes (Buttons) --- */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.1s;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+
+.btn-primary:hover {
+    background-color: #4a2896;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--dark-text);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* --- Global Header Styling --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 5%;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--card-background);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo a {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: var(--primary-color);
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-text {
+    background: none;
+    color: var(--dark-text);
+    padding: 10px 15px;
+    font-size: 0.9em;
+}
+
+/* --- Global Footer Styling --- */
+.footer {
+    background-color: #2c3e50;
+    color: #bdc3c7;
+    text-align: center;
+    padding: 30px 5%;
+    font-size: 0.9em;
+    margin-top: 50px;
+}
+
+.footer-links a {
+    color: #bdc3c7;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: var(--light-text);
+}
+
+/* --- Reusable Job Card Base Style --- */
+.job-card {
+    background-color: var(--card-background);
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    transition: background-color 0.2s, border-left 0.2s;
+    cursor: pointer;
+}
+
+.job-card:hover {
+    background-color: #fafafa;
+    border-left: 3px solid var(--primary-color);
+}
+
+.job-card h3 {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.job-card .company-name {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.job-card .posted-time {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 10px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+}

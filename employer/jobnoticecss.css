@@ -1,0 +1,80 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 20px;
+}
+
+h2 {
+    color: #5d42a6;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+form {
+    background: white;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    border-color: #5d42a6;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
+    background-color: #5d42a6;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #4a3184;
+}
+
+#closedMsg {
+    max-width: 420px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 18px;
+    color: #d32f2f;
+    font-weight: 700;
+}

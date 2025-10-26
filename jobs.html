@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Listings | CareerCompass</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="jobs.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">CareerCompass</a>
+    </div>
+    <div class="user-actions">
+      <a href="jobs.html" class="btn-text">Jobs</a>
+      <a href="services.html" class="btn-text">Services</a>
+      <a href="profile.html" class="btn-text">Profile</a>
+      <a href="./applicant/applicant-login.html" class="btn btn-secondary">Login</a>
+      <a href="./applicant/applicant-register.html" class="btn btn-primary">Register</a>
+      <a href="./employer/employer-login.html" class="btn-text">Employers Login</a>
+      <a href="./employer/employer-register.html" class="btn-text">Employers register</a>
+    </div>
+  </header>
+
+  <!-- Search Bar -->
+  <section class="search-bar">
+    <form id="search-form" class="search-form">
+      <input type="text" id="filter-keywords" placeholder="Search by keywords..." />
+      <input type="text" id="filter-location" placeholder="Location..." />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </section>
+
+  <!-- Filters -->
+  <section class="detailed-filters-bar">
+    <div class="filter-controls">
+      <span class="filter-label">Category:</span>
+      <button class="filter-btn active" data-category="">All</button>
+      <button class="filter-btn" data-category="IT">IT / Development</button>
+      <button class="filter-btn" data-category="Design">Internships</button>
+      <button class="filter-btn" data-category="Marketing">Marketing</button>
+    </div>
+  </section>
+
+  <!-- Results Info -->
+  <div class="results-info" id="results-info">
+    Loading job listings...
+  </div>
+
+  <!-- Results Section -->
+  <section class="results-container">
+    <div class="job-list-column">
+      <div id="jobs-container"></div>
+    </div>
+    <div class="job-detail-column">
+      <div class="detail-panel" id="job-detail-panel">
+        <p>Select a job to view details</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 CareerCompass. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">About Us</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Jobs Listing Script -->
+  <script>
+    const jobsContainer = document.getElementById('jobs-container');
+    const resultsInfo = document.getElementById('results-info');
+    const jobDetailPanel = document.getElementById('job-detail-panel');
+    let currentJobs = [];
+    let selectedCategory = "";
+
+    // Helper to merge local jobs
+    function getLocalJobs() {
+      const hrJobs = JSON.parse(localStorage.getItem('jobNotices') || "[]");
+      return hrJobs.map((job, idx) => ({
+        slug: 'local-' + idx,
+        company_name: job.company_name || "HR Job Notice",
+        title: job.title,
+        location: job.location,
+        tags: ["Local"],
+        description: job.desc,
+        url: "",
+        created_at: job.deadline || new Date().toISOString()
+      }));
+    }
+
+    // Render jobs as cards
+    function renderJobs(jobs) {
+      if (!jobs.length) {
+        jobsContainer.innerHTML = '<p>No jobs found matching your criteria.</p>';
+        resultsInfo.textContent = 'Showing 0 results';
+        return;
+      }
+      resultsInfo.textContent = `Showing ${jobs.length} results`;
+
+      const jobsHTML = jobs.map(job => {
+        let postedDate = '';
+        if (job.created_at && typeof job.created_at === 'string') {
+          postedDate = job.created_at.split('T')[0];
+        }
+        const isLocal = job.tags && job.tags.includes("Local");
+        return `
+          <div class="job-card" data-job-id="${job.slug}" style="${isLocal ? 'border-left:5px solid #5d3dbe' : ''}">
+            <div class="card-header">
+              <img src="https://via.placeholder.com/30x30?text=${job.company_name ? job.company_name.charAt(0) : 'C'}" alt="${job.company_name || ''} Logo" class="company-logo" />
+              <span class="bookmark"><i class="far fa-bookmark"></i></span>
+            </div>
+            <h3>${job.title}</h3>
+            <p class="company-name">${job.company_name}</p>
+            <div class="job-meta"><span>${job.tags ? job.tags.join(', ') : ''}</span> | <span>${job.location || 'Remote'}</span></div>
+            <p class="posted-time">${postedDate}</p>
+            ${isLocal ? '<span class="badge" style="background: #ff9900; color: #fff; border-radius: 3px; padding: 2px 6px;"> Posted</span>' : ''}
+            <button class="btn btn-secondary apply-btn">Apply</button>
+          </div>`;
+      }).join('');
+      jobsContainer.innerHTML = jobsHTML;
+
+      // Click handlers for job cards (detail panel)
+      document.querySelectorAll('.job-card').forEach(card => {
+        card.addEventListener('click', function() {
+          const jobId = card.getAttribute('data-job-id');
+          showJobDetails(jobId);
+        });
+      });
+
+      // Applicant login check before navigating to Apply
+      document.querySelectorAll('.apply-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var loggedInApplicant = localStorage.getItem('loggedInApplicant');
+          if (loggedInApplicant) {
+            window.location.href = "./applicant/applicant-apply.html";
+          } else {
+            alert("Please log in as an applicant to apply for this job.");
+            window.location.href = "./applicant/applicant-login.html";
+          }
+        });
+      });
+    }
+
+    // Show job details on right panel
+    function showJobDetails(jobId) {
+      const job = currentJobs.find(j => j.slug === jobId);
+      if(!job) return;
+      const isLocal = job.tags && job.tags.includes("Local");
+      jobDetailPanel.innerHTML = `
+        <h2>${job.title}</h2>
+        <p><strong>Company:</strong> ${job.company_name}</p>
+        <p><strong>Location:</strong> ${job.location}</p>
+        <p><strong>Tags:</strong> ${job.tags ? job.tags.join(', ') : ''}</p>
+        <div style="margin: 20px 0;">${job.description || 'No description available.'}</div>
+        ${isLocal ? `<p><strong>Contact for Application:</strong> ${job.email || 'see HR'}</p>` : `<a href="${job.url}" target="_blank" class="btn btn-primary">View & Apply</a>`}
+      `;
+    }
+
+    // Fetch and filter jobs
+    function fetchAndRenderJobs(filters = {}) {
+      resultsInfo.textContent = 'Loading job listings...';
+      jobsContainer.innerHTML = '';
+      const localJobs = getLocalJobs();
+
+      fetch('https://www.arbeitnow.com/api/job-board-api')
+        .then(res => res.json())
+        .then(data => {
+          let jobs = [...localJobs, ...data.data];
+
+          if(filters.keywords) {
+            const kw = filters.keywords.toLowerCase();
+            jobs = jobs.filter(j =>
+              (j.title && j.title.toLowerCase().includes(kw)) ||
+              (j.company_name && j.company_name.toLowerCase().includes(kw))
+            );
+          }
+          if(filters.location) {
+            const loc = filters.location.toLowerCase();
+            jobs = jobs.filter(j =>
+              j.location && j.location.toLowerCase().includes(loc)
+            );
+          }
+          if(filters.category) {
+            const cat = filters.category.toLowerCase();
+            jobs = jobs.filter(j =>
+              j.tags && j.tags.some(t => t.toLowerCase().includes(cat))
+            );
+          }
+
+          currentJobs = jobs;
+          renderJobs(jobs);
+        })
+        .catch(err => {
+          console.error('Failed to load jobs', err);
+          jobsContainer.innerHTML = '';
+          resultsInfo.textContent = 'Failed to load jobs. Please try again later.';
+        });
+    }
+
+    // Initial fetch
+    fetchAndRenderJobs();
+
+    // Search bar filter
+    document.getElementById('search-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const keywords = document.getElementById('filter-keywords').value.trim();
+      const location = document.getElementById('filter-location').value.trim();
+      fetchAndRenderJobs({ keywords, location, category: selectedCategory });
+    });
+
+    // Category filter clicks
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+        selectedCategory = this.getAttribute("data-category");
+        const keywords = document.getElementById('filter-keywords').value.trim();
+        const location = document.getElementById('filter-location').value.trim();
+        fetchAndRenderJobs({ keywords, location, category: selectedCategory });
+      });
+    });
+
+  </script>
+</body>
+</html>

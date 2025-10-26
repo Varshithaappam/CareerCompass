@@ -1,0 +1,104 @@
+/* Styles specific to the Home Page (index.html) */
+
+/* --- Hero Section --- */
+.hero-section {
+    text-align: center;
+    padding: 80px 5% 50px;
+    background: var(--card-background);
+    border-bottom: 5px solid var(--secondary-color);
+}
+
+.hero-section h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+.hero-section p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+/* --- Main Search Bar (Focus Component) --- */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    max-width: 950px;
+    margin: 0 auto;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.input-group {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    font-size: 1em;
+    outline: none;
+}
+
+.search-bar .btn-search {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-bar .btn-search:hover {
+    background-color: #e68a00;
+}
+
+/* --- Featured Sections --- */
+.content-section {
+    padding: 50px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.content-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    text-align: left;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.category-item {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.category-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.category-item a {
+    font-weight: bold;
+    color: var(--dark-text);
+}
+
+.category-item a:hover {
+    color: var(--primary-color);
+}
