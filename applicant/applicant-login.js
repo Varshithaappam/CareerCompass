@@ -10,7 +10,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
   if (user) {
     alert(`Welcome, ${user.name}!`);
     localStorage.setItem("loggedInApplicant", JSON.stringify(user));
-    window.location.href = "applicant-dashboard.html";
+    window.location.href = "../jobs.html";
   } else {
     alert("Invalid email or password.");
   }

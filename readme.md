@@ -123,3 +123,7 @@ Submission Checklist
  Consistent, responsive, interactive portal interface
 
  README file with usage instructions, features, structure, and future plans
+
+
+ GITHUB REPOSITORY
+ https://github.com/Varshithaappam/Career-Portal
