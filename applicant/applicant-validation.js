@@ -112,7 +112,7 @@ if (applicantLoginForm) {
     if (applicant) {
       alert(`Welcome, ${applicant.name}!`);
       localStorage.setItem("loggedInApplicant", JSON.stringify(applicant));
-      window.location.href = "applicant-dashboard.html";
+      window.location.href = "../jobs.html";
     } else {
       showError("login-password-error", "Invalid email or password.");
     }
